@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Exit</title>
+  <script>
+    window.onload = function () {
+      const from = document.referrer;
+
+      // 정확히 일치하는 주소만 인정
+      const expectedReferrer = "https://lee6097.github.io/talktalkcareplus/";
+
+      if (from === expectedReferrer) {
+        window.close();
+
+        // 닫히지 않을 경우 fallback 메시지
+        setTimeout(() => {
+          document.body.innerHTML = "<p style='text-align:center;'>창을 닫아주세요.</p>";
+        }, 300);
+      } else {
+        // 그 외 referrer는 모두 메인 페이지로 이동
+        location.href = expectedReferrer;
+      }
+    };
+  </script>
+</head>
+<body></body>
+</html>
