@@ -5,19 +5,18 @@
   <title>Exit</title>
   <script>
     window.onload = function () {
-      // 가짜 히스토리 한 칸 추가
-      history.pushState(null, null, location.href);
-
       const from = document.referrer;
 
-      // talktalkcareplus에서 왔을 경우 → 닫기 시도
+      // talktalkcareplus에서 왔을 경우 → 닫기 시도 (0.05초 뒤)
       if (from.includes("https://lee6097.github.io/talktalkcareplus/")) {
-        window.close();
-
-        // 닫히지 않으면 fallback 처리
         setTimeout(() => {
-          document.body.innerHTML = "<p style='text-align:center;'>창을 닫아주세요.</p>";
-        }, 300);
+          window.close();
+
+          // 닫히지 않으면 fallback 처리
+          setTimeout(() => {
+            document.body.innerHTML = "<p style='text-align:center;'>창을 닫아주세요.</p>";
+          }, 300);
+        }, 50); // 0.05초 딜레이
       } else {
         // 그 외의 경우에는 메인 페이지로 리디렉션
         location.href = "https://lee6097.github.io/talktalkcareplus/";
