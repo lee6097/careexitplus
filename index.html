@@ -7,16 +7,17 @@
     window.onload = function () {
       const from = document.referrer;
 
+      // talktalkcare에서 왔을 경우 → 닫기 시도
       if (from.includes("https://lee6097.github.io/talktalkcareplus/")) {
         window.close();
 
-        // 닫히지 않을 경우 fallback 메시지
+        // 닫히지 않으면 fallback 처리
         setTimeout(() => {
           document.body.innerHTML = "<p style='text-align:center;'>창을 닫아주세요.</p>";
         }, 300);
       } else {
-        // 그 외 referrer는 모두 메인 페이지로 이동
-        location.href = expectedReferrer;
+        // 그 외의 경우에는 메인 페이지로 리디렉션
+        location.href = "https://lee6097.github.io/talktalkcareplus/";
       }
     };
   </script>
