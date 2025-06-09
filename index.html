@@ -5,9 +5,12 @@
   <title>Exit</title>
   <script>
     window.onload = function () {
+      // 가짜 히스토리 한 칸 추가
+      history.pushState(null, null, location.href);
+
       const from = document.referrer;
 
-      // talktalkcare에서 왔을 경우 → 닫기 시도
+      // talktalkcareplus에서 왔을 경우 → 닫기 시도
       if (from.includes("https://lee6097.github.io/talktalkcareplus/")) {
         window.close();
 
